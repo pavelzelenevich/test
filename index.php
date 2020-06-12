@@ -17,10 +17,12 @@ foreach ($resultLead as $keyfirst => $item){
     echo sprintf("| %s |", $item->getDayDate());
 
     foreach ($copyresultarray as $key => $i) {
-        if($i->getDate() === $dat){
+        if(($i->getDate() === $dat) && ($count < 3)){
+            $count++;
             echo sprintf(" %s (%s hours)", $i->getUserName(), round($i->getHours(), 2));
             unset($copyresultarray[$key]);
         } else {
+            $count = 0;
             echo PHP_EOL;
             continue 2;
         }
